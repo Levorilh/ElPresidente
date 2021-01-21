@@ -24,8 +24,9 @@ public class Country {
         this.minimalSatisfactionAllowed = minimalSatisfactionAllowed;
     }
 
-    public Country newCountry(String name, int minimalSatisfactionAllowed) {
-        return new Country(name, defaultCountryFaction(), 200, 0, 15, 15, minimalSatisfactionAllowed);
+    Country (String name, int minimalSatisfactionAllowed) {
+        this(name, null, 200, 0, 15, 15, minimalSatisfactionAllowed);
+        this.listFaction = defaultCountryFaction();
     }
 
     private ArrayList<Faction> defaultCountryFaction(){
