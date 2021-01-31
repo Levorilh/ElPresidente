@@ -11,15 +11,15 @@ public class Country {
     int treasury;
     int food;
     int industry;
-    int agriculture;
+    int farming;
     int minimalSatisfactionAllowed;
 
-    Country(String name, ArrayList<Faction> listFaction, int treasury, int food, int industry, int agriculture, int minimalSatisfactionAllowed){
+    Country(String name, ArrayList<Faction> listFaction, int treasury, int food, int industry, int farming, int minimalSatisfactionAllowed){
         this.name = name;
         this.listFaction = listFaction;
         this.treasury = treasury;
         this.food = food;
-        this.agriculture = agriculture;
+        this.farming = farming;
         this.industry = industry;
         this.minimalSatisfactionAllowed = minimalSatisfactionAllowed;
     }
@@ -43,7 +43,7 @@ public class Country {
 
     public void EndOfYearPreBilan() {
         treasury += industry * 10;
-        food += agriculture * 40;
+        food += farming * 40;
     }
 
     public int getPopulation() {
@@ -61,7 +61,7 @@ public class Country {
     public void EndOfYearBilan() {
         Random r= new Random();
         int consumption = foodNeeded();
-        int production = agriculture * 40;
+        int production = farming * 40;
 
         if(consumption < production) {
             int population = getPopulation();
