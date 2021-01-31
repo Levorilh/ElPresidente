@@ -24,8 +24,9 @@ public class Country {
         this.minimalSatisfactionAllowed = minimalSatisfactionAllowed;
     }
 
-    public Country newCountry(String name, int minimalSatisfactionAllowed) {
-        return new Country(name, defaultCountryFaction(), 200, 0, 15, 15, minimalSatisfactionAllowed);
+    Country (String name, int minimalSatisfactionAllowed) {
+        this(name, null, 200, 0, 15, 15, minimalSatisfactionAllowed);
+        this.listFaction = defaultCountryFaction();
     }
 
     private ArrayList<Faction> defaultCountryFaction(){
@@ -73,9 +74,9 @@ public class Country {
             int mort = (int) Math.floor((consumption - food) / 4);
             for(int i=0; i < mort; i++) {
                 listFaction.get(r.nextInt(listFaction.size())).partisant--;
-            }
-            for(Faction faction : listFaction) {
-                faction.satisfaction -= 2;
+                for(Faction faction : listFaction) {
+                    faction.satisfaction -= 2;
+                }
             }
             food = 0;
         }
@@ -92,5 +93,31 @@ public class Country {
             satisfaction += faction.satisfaction;
         }
         return (satisfaction / population) < minimalSatisfactionAllowed;
+    }
+
+    private int foodPrice(int foodBuy){
+        return foodBuy * 8;
+    }
+
+    public boolean canBuyFood(int foodBuy){
+        return treasury >= foodPrice(foodBuy);
+    }
+
+    public void buyFood(int foodBuy){
+        treasury -= foodPrice(foodBuy);
+        food += foodBuy;
+    }
+
+    private int bribePriceFaction(int indexFaction, int satisfationBuy){
+        return listFaction.get(indexFaction).partisant * 15 * satisfationBuy;
+    }
+
+    public boolean canBribeFaction(int indexFaction, int satisfationBuy){
+        return treasury >= bribePriceFaction(indexFaction, satisfationBuy);
+    }
+
+    public void BribeFaction(int indexFaction, int satisfationBuy){
+        treasury -= bribePriceFaction(indexFaction, satisfationBuy);
+        listFaction.get(indexFaction).satisfaction += satisfationBuy;
     }
 }
