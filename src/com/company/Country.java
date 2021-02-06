@@ -95,7 +95,7 @@ public class Country {
         return (satisfaction / population) < minimalSatisfactionAllowed;
     }
 
-    private int foodPrice(int foodBuy){
+    public int foodPrice(int foodBuy){
         return foodBuy * 8;
     }
 
@@ -119,5 +119,25 @@ public class Country {
     public void BribeFaction(int indexFaction, int satisfationBuy){
         treasury -= bribePriceFaction(indexFaction, satisfationBuy);
         listFaction.get(indexFaction).satisfaction += satisfationBuy;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getTreasury() {
+        return this.treasury;
+    }
+
+    public int getFood() {
+        return this.food;
+    }
+
+    public int getIndustry() {
+        return this.industry;
+    }
+
+    public int getFarming() {
+        return this.farming;
     }
 }
