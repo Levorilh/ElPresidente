@@ -6,7 +6,7 @@ public class MainGamePanel implements DisplayPanel{
         this.party = party;
     }
     public void show(){
-        Party.Round++;
+        party.round++;
         do{
             for(Country country : party.listCountry){
                 if(!country.isGameOver()) {
@@ -16,7 +16,7 @@ public class MainGamePanel implements DisplayPanel{
                     //TODO: Affiche choix
                     //TODO: selectionne choix
                     //TODO: applique choix
-                    if (Party.Round % 4) {
+                    if (party.round % 4 == 0) {
                         BilanPanel bilanPanel = new BilanPanel(country);
                         bilanPanel.show();
                     }
