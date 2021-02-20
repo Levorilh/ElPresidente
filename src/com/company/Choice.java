@@ -10,7 +10,14 @@ public class Choice {
     int industry;
     int farming;
 
-    //TODO constructor from file/text/csv whatever
+    public Choice(String description, ArrayList<Faction> factions, int treasury, int food, int industry, int farming){
+        this.description=description;
+        this.factions=factions;
+        this.treasury=treasury;
+        this.food=food;
+        this.industry=industry;
+        this.farming=farming;
+    }
 
     public Country applyChange(Country country){
         country.treasury+=treasury;

@@ -21,7 +21,7 @@ public class MainGamePanel implements DisplayPanel {
                     System.out.println("Selectionnez votre choix :");
                     int input = scanner.nextInt();
                     Choice choice = event.choices.get(input);
-                    //TODO: applique choix
+                    choice.applyChange(country);
                     if (party.round % 4 == 0) {
                         BilanPanel bilanPanel = new BilanPanel(country);
                         bilanPanel.show();
