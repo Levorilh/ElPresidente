@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RandomEventManager {
     Season season;
@@ -13,7 +14,35 @@ public class RandomEventManager {
     }
 
     public Event getEvent() {
-        return null;
+        ArrayList<Event> list = getEventListByCircumstanceAndSeason(listCircumstance, season);
+        int random = new Random().nextInt(list.size());
+        return list.get(random);
+    }
+
+    private ArrayList<Event> getEventListByCircumstanceAndSeason(ArrayList<Circumstance> listCircumstance, Season season) {
+        ArrayList<Event> list = new ArrayList<>();
+        for (Event event : getEventList()) {
+            if (event.season.equals(Season.MISCELLANEOUS) || event.season.equals(season)) {
+                boolean add = false;
+                for (Circumstance circumstance1 : event.circumstance) {
+                    for (Circumstance circumstance2 : listCircumstance) {
+                        if (circumstance1.equals(circumstance2)) {
+                            add = true;
+                            break;
+                        } else {
+                            add = false;
+                        }
+                    }
+                    if (!add){
+                        break;
+                    }
+                }
+                if (add) {
+                    list.add(event);
+                }
+            }
+        }
+        return list;
     }
 
     private ArrayList<Event> getEventList() {
@@ -45,6 +74,7 @@ public class RandomEventManager {
                             }
                         }
                 ));
+                //--------------------------------------------------------------------------------------
             }
         };
     }
