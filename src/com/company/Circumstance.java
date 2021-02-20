@@ -9,4 +9,6 @@ public enum Circumstance {
 //    RUSSIA,
 //    ASIA,
     REVOLUTION,
+    ;
+
 }

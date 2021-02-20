@@ -105,10 +105,10 @@ public class Country {
         food += foodBuy;
     }
 
-    public void bribe(Faction faction) {
+    public boolean bribe(Faction faction) {
         int treasuryToBribe;
         if (!faction.canBeBribed(this.treasury)) {
-            return;
+            return false;
         }
 
         treasuryToBribe = faction.getBribePrice();
@@ -116,6 +116,7 @@ public class Country {
         treasury -= treasuryToBribe;
 
         corruptionSideEffect(treasuryToBribe);
+        return true;
     }
 
     private void corruptionSideEffect(int paidValue) {

@@ -4,11 +4,16 @@ import java.util.ArrayList;
 
 public class Event {
 
-    Circumstance circumstance;
+    ArrayList<Circumstance> circumstance;
     Season season;
     String description;
     ArrayList<Choice> choices;
 
-    //TODO constructor from file/text/csv whatever
+    public Event(ArrayList<Circumstance> circumstance, Season season, String description,ArrayList<Choice> choices){
+        this.circumstance=circumstance;
+        this.season=season;
+        this.description=description;
+        this.choices=choices;
+    }
 
 }

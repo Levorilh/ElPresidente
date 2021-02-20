@@ -9,6 +9,9 @@ public class EventPanel implements DisplayPanel {
 
     @Override
     public void show() {
-        //TODO afficher event + choix
+        System.out.println(String.format("%s",event.description));
+        for(int i = 0; i<event.choices.size(); i++){
+            System.out.println(String.format("%d - %s", i, event.choices.get(i).description));
+        }
     }
 }
