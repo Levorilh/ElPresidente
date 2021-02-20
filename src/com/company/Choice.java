@@ -8,9 +8,25 @@ public class Choice {
     int treasury;
     int food;
     int industry;
-    int farms;
+    int farming;
 
     //TODO constructor from file/text/csv whatever
 
-    //TODO applyChanges
+    public Country applyChange(Country country){
+        country.treasury+=treasury;
+        country.food+=food;
+        country.industry+=industry;
+        country.farming+=farming;
+
+        for(Faction faction : factions){
+            for(int i = 0; i < country.listFaction.size(); i++){
+                if(country.listFaction.get(i).name.equals(faction.name)){
+                    country.listFaction.get(i).addSatisfaction(faction.getSatisfaction());
+                    country.listFaction.get(i).addPartisant(faction.partisant);
+                }
+            }
+        }
+
+        return country;
+    }
 }
