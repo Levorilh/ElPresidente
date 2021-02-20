@@ -167,6 +167,10 @@ public class Country {
         treasury += value;
     }
 
+    public void addFood(int food){
+        this.food += food;
+    }
+
     @Override
     public String toString() {
         return "Country de " + name +

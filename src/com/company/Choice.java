@@ -20,10 +20,10 @@ public class Choice {
     }
 
     public Country applyChange(Country country){
-        country.treasury+=treasury;
-        country.food+=food;
-        country.industry+=industry;
-        country.farming+=farming;
+        country.addTreasury(treasury);
+        country.addFood(food);
+        country.addIndustry(industry);
+        country.addFarming(farming);
 
         for(Faction faction : factions){
             for(int i = 0; i < country.listFaction.size(); i++){

@@ -32,6 +32,9 @@ public class Party {
                 leftCountries--;
             }
         }
-        return leftCountries <= 1;
+        if(listCircumstance.contains(Circumstance.MULTIPLAYER))
+            return leftCountries <= 1;
+        else
+            return leftCountries <= 0;
     }
 }

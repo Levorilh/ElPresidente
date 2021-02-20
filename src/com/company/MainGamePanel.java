@@ -20,6 +20,7 @@ public class MainGamePanel implements DisplayPanel {
                     RandomEventManager randomEventManager = new RandomEventManager(party.listCircumstance,season);
                     Event event = randomEventManager.getEvent();
                     EventPanel eventPanel = new EventPanel(event);
+                    eventPanel.show();
                     System.out.println("Selectionnez votre choix :");
                     int input = scanner.nextInt();
                     Choice choice = event.choices.get(input);
