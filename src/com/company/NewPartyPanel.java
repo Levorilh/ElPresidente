@@ -10,9 +10,18 @@ public class NewPartyPanel implements DisplayPanel{
         int minimalSatisfactionAllowed = 0;
 
         System.out.println("Dans quel Scenario souhaitez vous jouer ?");
-        //TODO: Afficher la liste des scénarios
+        System.out.println("-0- 1er guerre mondiale");
+        System.out.println("-1- Révolution française");
         input = scanner.nextInt();
-        //TODO: Charge le scénario dans la party
+        switch(input){
+            case(0):
+                party.addCircumstance(Circumstance.WORLDWAR);
+                break;
+            case(1):
+                party.addCircumstance(Circumstance.REVOLUTION);
+                break;
+        }
+        party.addCircumstance(Circumstance.ANYTIME);
 
         System.out.println("Choisissez le niveau de difficulté");
         System.out.println("-0- Facile");
@@ -40,6 +49,10 @@ public class NewPartyPanel implements DisplayPanel{
             String name = scanner.next();
             Country country = new Country(name, party.difficultyLevel.minimalSatisfaction);
             party.addCountry(country);
+        }
+
+        if(party.listCountry.size() > 1){
+            party.addCircumstance(Circumstance.MULTIPLAYER);
         }
 
         MainGamePanel mainGamePanel = new MainGamePanel(party);

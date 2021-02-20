@@ -9,6 +9,6 @@ public class EventPanel implements DisplayPanel {
 
     @Override
     public void show() {
-
+        //TODO afficher event + choix
     }
 }

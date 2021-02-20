@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class BilanPanel implements DisplayPanel {
     Country country;
-
     BilanPanel(Country country) {
         this.country = country;
     }
@@ -16,11 +15,7 @@ public class BilanPanel implements DisplayPanel {
         boolean purchaseFood = false;
         boolean bribe = false;
         //TODO: afficher info country
-        System.out.println(country.getName() + "posséde:\n" + country.getTreasury() +
-                "€\nNourriture: " + country.getFood() +
-                "\nIndustrie: " + country.getIndustry() +
-                "\nAgriculture: " + country.getFarming() +
-                "\nPopulation totale: " + country.getPopulation());
+        System.out.println(country);
 
         //TODO: afficher food needed
         System.out.println("Pour que personne ne meurt de faim il vous faut " + country.foodNeeded());
@@ -35,14 +30,14 @@ public class BilanPanel implements DisplayPanel {
             if (buyFood == 0) {
                 System.out.println("Etes-vous sûr de ne pas vouloir en acheter ?");
                 anwser = scanner.next();
-                if (anwser == "Oui" || anwser == "oui") {
+                if (anwser.equals("Oui") || anwser.equals("oui")) {
                     purchaseFood = true;
                 }
             } else {
                 System.out.println("Pour " + buyFood + " nourriture ça vous fera " + country.foodPrice(buyFood) + "€ à payer");
                 System.out.println("Etes-vous toujours d'accord ?");
                 anwser = scanner.next();
-                if (anwser == "Oui" || anwser == "oui") {
+                if (anwser.equals("Oui") || anwser.equals("oui")) {
                     if (country.canBuyFood(buyFood)) {
                         country.buyFood(buyFood);
                         System.out.println("Vous avez acheté" + buyFood + "nourriture(s)");
