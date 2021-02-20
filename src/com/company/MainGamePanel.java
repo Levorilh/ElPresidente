@@ -12,7 +12,7 @@ public class MainGamePanel implements DisplayPanel {
         do {
             for (Country country : party.listCountry) {
                 if (!country.isGameOver()) {
-                    //TODO: afficher info country
+                    System.out.println(country);
                     //TODO: Choisi un Event en fonction du scenario/saison(Party.Round % 4)
                     //TODO: Affiche Event
                     //TODO: Affiche choix
@@ -25,5 +25,6 @@ public class MainGamePanel implements DisplayPanel {
                 }
             }
         } while (!party.isPartyOver());
+        System.out.println("fin de la partie");
     }
 }

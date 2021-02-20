@@ -1,0 +1,9 @@
+Capitalistes;50;15
+Communistes;50;15
+Libéraux;50;15
+Religieux;50;15
+Militaristes;50;15
+Ecologistes;50;15
+Nationnalistes;50;15
+Loyalistes;100;15
+

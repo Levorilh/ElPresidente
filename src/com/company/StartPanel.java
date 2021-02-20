@@ -7,7 +7,7 @@ public class StartPanel implements DisplayPanel {
         Scanner scanner = new Scanner(System.in);
         int input = 0;
         do {
-            System.out.println("Menu Principale");
+            System.out.println("Menu Principal");
             System.out.println("- 0 - Quitter");
             System.out.println("- 1 - Jouer");
             input = scanner.nextInt();

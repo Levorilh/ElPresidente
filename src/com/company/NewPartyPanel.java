@@ -9,7 +9,7 @@ public class NewPartyPanel implements DisplayPanel{
         int input = 0;
         int minimalSatisfactionAllowed = 0;
 
-        System.out.println("Dans quelle Scenario soihaitez vous jouer ?");
+        System.out.println("Dans quel Scenario souhaitez vous jouer ?");
         //TODO: Afficher la liste des scénarios
         input = scanner.nextInt();
         //TODO: Charge le scénario dans la party
