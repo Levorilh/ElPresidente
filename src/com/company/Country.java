@@ -1,8 +1,5 @@
 package com.company;
 
-import javax.swing.plaf.IconUIResource;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Country {
@@ -150,20 +147,20 @@ public class Country {
         return listFaction;
     }
 
-    public Country addIndustry(int newIndustry) {
+    public void addIndustry(int newIndustry) {
         industry += newIndustry;
         if (isOverExploited()) {
             industry -= newIndustry;
         }
-        return this;
+        industry = Math.max(0 , industry);
     }
 
-    public Country addFarming(int newFarming) {
-        industry += newFarming;
+    public void addFarming(int newFarming) {
+        farming += newFarming;
         if (isOverExploited()) {
-            industry -= newFarming;
+            farming -= newFarming;
         }
-        return this;
+        farming = Math.max(0 , farming);
     }
 
     public void addTreasury(int value) {
