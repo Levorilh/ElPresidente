@@ -71,7 +71,7 @@ public class Country {
             for (int i = 0; i < mort; i++) {
                 listFaction.get(r.nextInt(listFaction.size())).partisant--;
                 for (Faction faction : listFaction) {
-                    faction.reduceSatisfaction(2);
+                    faction.addSatisfaction(-2);
                 }
             }
             food = 0;
@@ -120,7 +120,7 @@ public class Country {
         int LOYALISTS_INDEX = listFaction.size() - 1;
         int CORRUPTION_RATIO = 10;
         listFaction.get(LOYALISTS_INDEX)
-                .reduceSatisfaction(paidValue / CORRUPTION_RATIO);
+                .addSatisfaction(-(paidValue / CORRUPTION_RATIO));
     }
 
     public String getName() {

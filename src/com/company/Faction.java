@@ -22,6 +22,7 @@ public class Faction {
         if (this.satisfaction > 0) {
             this.satisfaction += satisfaction;
         }
+        this.satisfaction = Math.max(0, this.satisfaction);
     }
 
     public String getName() {
@@ -42,13 +43,6 @@ public class Faction {
         return treasury >= getBribePrice();
     }
 
-
-    public void reduceSatisfaction(int amount){
-        satisfaction -= amount;
-        if(satisfaction < 0){
-            satisfaction = 0;
-        }
-    }
 
     public int getSatisfaction() {
         return satisfaction;
