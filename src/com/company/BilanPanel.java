@@ -68,11 +68,6 @@ public class BilanPanel implements DisplayPanel {
         Scanner sc = new Scanner(System.in);
         String userChoice;
         int factionQty = country.getListFaction().size();
-
-        //TODO:  boucle do while
-
-        // si possible demander confirmation en précisant le prix
-
         do {
             if (wantsToBribe()) {
                 Faction selected = selectFaction();
