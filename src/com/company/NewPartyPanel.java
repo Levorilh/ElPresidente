@@ -9,7 +9,7 @@ public class NewPartyPanel implements DisplayPanel{
         int input = 0;
         int minimalSatisfactionAllowed = 0;
 
-        System.out.println("Dans quelle Scenario soihaitez vous jouer ?");
+        System.out.println("Dans quel Scenario souhaitez vous jouer ?");
         //TODO: Afficher la liste des scénarios
         input = scanner.nextInt();
         //TODO: Charge le scénario dans la party
@@ -21,13 +21,13 @@ public class NewPartyPanel implements DisplayPanel{
         input = scanner.nextInt();
         switch (input){
             case (0):
-                minimalSatisfactionAllowed = 50;
+                party.difficultyLevel = DifficultyLevel.EASY;
                 break;
             case (1):
-                minimalSatisfactionAllowed = 35;
+                party.difficultyLevel = DifficultyLevel.MEDIUM;
                 break;
             case (2):
-                minimalSatisfactionAllowed = 20;
+                party.difficultyLevel = DifficultyLevel.HARD;
                 break;
         }
 
@@ -38,7 +38,7 @@ public class NewPartyPanel implements DisplayPanel{
             System.out.println("Joueur " + i + ":");
             System.out.println("Entrez le nom de votre pays :");
             String name = scanner.next();
-            Country country = new Country(name, minimalSatisfactionAllowed);
+            Country country = new Country(name, party.difficultyLevel.minimalSatisfaction);
             party.addCountry(country);
         }
 

@@ -1,16 +1,18 @@
 package com.company;
 
-public class MainGamePanel implements DisplayPanel{
+public class MainGamePanel implements DisplayPanel {
     Party party;
-    MainGamePanel(Party party){
+
+    MainGamePanel(Party party) {
         this.party = party;
     }
-    public void show(){
+
+    public void show() {
         party.round++;
-        do{
-            for(Country country : party.listCountry){
-                if(!country.isGameOver()) {
-                    //TODO: afficher info country
+        do {
+            for (Country country : party.listCountry) {
+                if (!country.isGameOver()) {
+                    System.out.println(country);
                     //TODO: Choisi un Event en fonction du scenario/saison(Party.Round % 4)
                     //TODO: Affiche Event
                     //TODO: Affiche choix
@@ -22,6 +24,7 @@ public class MainGamePanel implements DisplayPanel{
                     }
                 }
             }
-        }while(!party.isPartyOver());
+        } while (!party.isPartyOver());
+        System.out.println("fin de la partie");
     }
 }
