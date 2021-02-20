@@ -16,7 +16,9 @@ public class MainGamePanel implements DisplayPanel {
             for (Country country : party.listCountry) {
                 if (!country.isGameOver()) {
                     System.out.println(country);
-                    Event event = null; //TODO: Choisi un Event en fonction du scenario/saison(Party.Round % 4)
+                    Season season = Season.values()[party.round%4];
+                    RandomEventManager randomEventManager = new RandomEventManager(party.listCircumstance,season);
+                    Event event = randomEventManager.getEvent();
                     EventPanel eventPanel = new EventPanel(event);
                     System.out.println("Selectionnez votre choix :");
                     int input = scanner.nextInt();
