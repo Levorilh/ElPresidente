@@ -40,7 +40,7 @@ public class Country {
         return ListFaction.fromDefault();
     }
 
-    public void EndOfYearPreBilan() {
+    public void endOfYearPreBilan() {
         treasury += industry * 10;
         food += farming * 40;
     }
@@ -57,7 +57,7 @@ public class Country {
         return getPopulation() * foodByPartisantByYear;
     }
 
-    public void EndOfYearBilan() {
+    public void endOfYearBilan() {
         Random r = new Random();
         int consumption = foodNeeded();
         int production = farming * 40;

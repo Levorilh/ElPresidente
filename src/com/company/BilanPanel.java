@@ -11,14 +11,21 @@ public class BilanPanel implements DisplayPanel {
 
     public void show() {
 
+        System.out.println("Etat de votre île avant le bilan\n" +country);
+        country.endOfYearPreBilan();
+
+        System.out.println("Etat de votre île après recolte des champs et des impôts");
         System.out.println(country);
 
         askForFood();
 
         askForBribe();
 
-        //TODO: exécuter le bilan
-        //TODO: vérifier isGameOver()
+        country.endOfYearBilan();
+
+        if(country.isGameOver()){
+            System.out.println("Fin de la partie");
+        }
     }
 
     private void askForFood() {
