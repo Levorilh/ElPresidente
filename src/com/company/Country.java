@@ -178,4 +178,20 @@ public class Country {
                 ",\n Partie de l'île réservée à l'agriculture " + farming + "%"
                 ;
     }
+
+    public void setTreasury(int treasury) {
+        this.treasury = treasury;
+    }
+
+    public void setFood(int food) {
+        this.food = food;
+    }
+
+    public void setIndustry(int industry) {
+        this.industry = industry;
+    }
+
+    public void setFarming(int farming) {
+        this.farming = farming;
+    }
 }

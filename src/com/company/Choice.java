@@ -1,20 +1,22 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Choice {
     String description;
     int[] satisfactionReductions;
     int treasury;
     int food;
     int industry;
-    int farm;
+    int farming;
 
-    public Choice(String description, int[] satisfactionReductions, int treasury, int food, int industry, int farm) {
+    public Choice(String description, int[] satisfactionReductions, int treasury, int food, int industry, int farming) {
         this.description = description;
         this.satisfactionReductions = satisfactionReductions;
         this.treasury = treasury;
         this.food = food;
         this.industry = industry;
-        this.farm = farm;
+        this.farming = farming;
     }
 
     public Choice fromText(String csvLine){
@@ -41,8 +43,16 @@ public class Choice {
 
     }
 
+    public void executeOn(Country c){
+        c.setFarming(c.getFarming() - farming);
+        c.setFood(c.getFood() - food);
+        c.setIndustry(c.getIndustry() - industry);
+        c.setTreasury(c.getTreasury() - treasury);
 
-    //TODO constructor from file/text/csv whatever
+        ArrayList<Faction> listFactions = c.getListFaction();
 
-    //TODO applyChanges
+        for (int i = 0; i < listFactions.size() ; i++) {
+            listFactions.get(i).reduceSatisfaction(satisfactionReductions[i]);
+        }
+    }
 }
