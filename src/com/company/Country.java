@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Country {
+    private static int FOOD_PRICE = 8;
     final int foodByPartisantByYear = 4;
 
     String name;
@@ -92,7 +93,7 @@ public class Country {
     }
 
     public int foodPrice(int foodBuy) {
-        return foodBuy * 8;
+        return foodBuy * FOOD_PRICE;
     }
 
     public boolean canBuyFood(int foodBuy) {
@@ -104,10 +105,10 @@ public class Country {
         food += foodBuy;
     }
 
-    public void bribe(Faction faction) {
+    public boolean bribe(Faction faction) {
         int treasuryToBribe;
         if (!faction.canBeBribed(this.treasury)) {
-            return;
+            return false;
         }
 
         treasuryToBribe = faction.getBribePrice();
@@ -115,6 +116,7 @@ public class Country {
         treasury -= treasuryToBribe;
 
         corruptionSideEffect(treasuryToBribe);
+        return true;
     }
 
     private void corruptionSideEffect(int paidValue) {
@@ -177,5 +179,21 @@ public class Country {
                 ",\n Partie de l'île réservée à l'industrie " + industry + "%" +
                 ",\n Partie de l'île réservée à l'agriculture " + farming + "%"
                 ;
+    }
+
+    public void setTreasury(int treasury) {
+        this.treasury = treasury;
+    }
+
+    public void setFood(int food) {
+        this.food = food;
+    }
+
+    public void setIndustry(int industry) {
+        this.industry = industry;
+    }
+
+    public void setFarming(int farming) {
+        this.farming = farming;
     }
 }

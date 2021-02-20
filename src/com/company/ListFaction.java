@@ -40,4 +40,14 @@ public class ListFaction extends ArrayList<Faction> {
         }
         return (float)satisfaction/population;
     }
+
+    public String getFactionsNames(){
+        StringBuilder sb = new StringBuilder();
+        int factionNumber = 0;
+        for (Faction f: this) {
+            sb.append(String.format("%d/ %s\n" , factionNumber , f.name));
+            factionNumber++;
+        }
+        return sb.toString();
+    }
 }

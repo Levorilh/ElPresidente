@@ -4,8 +4,10 @@ public enum Circumstance {
     ANYTIME,
     MULTIPLAYER,
     WORLDWAR,
-    EUROPE,
-    RUSSIA,
-    ASIA,
+//    EUROPE,
+//    RUSSIA,
+//    ASIA,
     REVOLUTION,
+    ;
+
 }
