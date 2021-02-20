@@ -14,30 +14,24 @@ public class BilanPanel implements DisplayPanel {
         String anwser = "";
         boolean purchaseFood = false;
         boolean bribe = false;
-        //TODO: afficher info country
         System.out.println(country);
 
-        //TODO: afficher food needed
         System.out.println("Pour que personne ne meurt de faim il vous faut " + country.foodNeeded());
 
-        //TODO: boucle do while
-        // demander combien il veux acheter
-        // si possible demander confirmation en précisant le prix
-        // si confirmé après achat sortir de la boucle
         System.out.println("Combien de nourriture voulez-vous acheter ? (1 nourriture = " + country.foodPrice(1) + ")");
         buyFood = scanner.nextInt();
         while (purchaseFood) {
             if (buyFood == 0) {
-                System.out.println("Etes-vous sûr de ne pas vouloir en acheter ?");
+                System.out.println("Etes-vous sûr de ne pas vouloir en acheter ? OUI/NON");
                 anwser = scanner.next();
-                if (anwser.equals("Oui") || anwser.equals("oui")) {
+                if (anwser.toUpperCase().equals("OUI") ) {
                     purchaseFood = true;
                 }
             } else {
                 System.out.println("Pour " + buyFood + " nourriture ça vous fera " + country.foodPrice(buyFood) + "€ à payer");
-                System.out.println("Etes-vous toujours d'accord ?");
+                System.out.println("Etes-vous toujours d'accord ? OUI/NON");
                 anwser = scanner.next();
-                if (anwser.equals("Oui") || anwser.equals("oui")) {
+                if (anwser.toUpperCase().equals("OUI")) {
                     if (country.canBuyFood(buyFood)) {
                         country.buyFood(buyFood);
                         System.out.println("Vous avez acheté" + buyFood + "nourriture(s)");

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Country {
+    private static int FOOD_PRICE = 8;
     final int foodByPartisantByYear = 4;
 
     String name;
@@ -92,7 +93,7 @@ public class Country {
     }
 
     public int foodPrice(int foodBuy) {
-        return foodBuy * 8;
+        return foodBuy * FOOD_PRICE;
     }
 
     public boolean canBuyFood(int foodBuy) {
