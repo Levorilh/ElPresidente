@@ -25,11 +25,13 @@ public class Choice {
         country.addIndustry(industry);
         country.addFarming(farming);
 
-        for(Faction faction : factions){
-            for(int i = 0; i < country.listFaction.size(); i++){
-                if(country.listFaction.get(i).name.equals(faction.name)){
-                    country.listFaction.get(i).addSatisfaction(faction.getSatisfaction());
-                    country.listFaction.get(i).addPartisant(faction.partisant);
+        if(factions != null) {
+            for (Faction faction : factions) {
+                for (int i = 0; i < country.listFaction.size(); i++) {
+                    if (country.listFaction.get(i).name.equals(faction.name)) {
+                        country.listFaction.get(i).addSatisfaction(faction.getSatisfaction());
+                        country.listFaction.get(i).addPartisant(faction.partisant);
+                    }
                 }
             }
         }
