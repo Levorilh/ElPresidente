@@ -38,6 +38,9 @@ public class ListFaction extends ArrayList<Faction> {
             population += faction.getPartisant();
             satisfaction += faction.getSatisfaction()*faction.getPartisant();
         }
+        if(population <= 0){
+            return 0;
+        }
         return (float)satisfaction/population;
     }
 
