@@ -2,20 +2,12 @@ package com.company;
 
 import java.util.Scanner;
 
-public class NewPartyPanel implements DisplayPanel{
-    public void show(){
+public class NewPartyPanel implements DisplayPanel {
+    public void show() {
         Scanner scanner = new Scanner(System.in);
         Party party = new Party();
-        int input;
 
-        System.out.println("Dans quel Scenario souhaitez vous jouer ?");
-        System.out.println("-0- 1er guerre mondiale");
-        System.out.println("-1- Révolution française");
-        input = new Reader().getInteger();
-        switch (input) {
-            case (0) -> party.addCircumstance(Circumstance.WORLDWAR);
-            case (1) -> party.addCircumstance(Circumstance.REVOLUTION);
-        }
+        int input = askScenario(party);
         party.addCircumstance(Circumstance.ANYTIME);
 
         System.out.println("Choisissez le niveau de difficulté");
@@ -32,7 +24,7 @@ public class NewPartyPanel implements DisplayPanel{
         System.out.println("Combien de joueur ?");
         input = new Reader().getInteger();
 
-        for(int i = 0; i < input; i++){
+        for (int i = 0; i < input; i++) {
             System.out.println("Joueur " + i + ":");
             System.out.println("Entrez le nom de votre pays :");
             String name = scanner.next();
@@ -40,11 +32,30 @@ public class NewPartyPanel implements DisplayPanel{
             party.addCountry(country);
         }
 
-        if(party.listCountry.size() > 1){
+        if (party.listCountry.size() > 1) {
             party.addCircumstance(Circumstance.MULTIPLAYER);
         }
 
         MainGamePanel mainGamePanel = new MainGamePanel(party);
         mainGamePanel.show();
+    }
+
+    private int askScenario(Party party) {
+        boolean correct = false;
+        int input = 0;
+        while (!correct) {
+            correct = true;
+            System.out.println("Dans quel Scenario souhaitez vous jouer ?");
+            System.out.println("-0- 1er guerre mondiale");
+            System.out.println("-1- Révolution française");
+
+            input = new Reader().getInteger();
+            switch (input) {
+                case (0) -> party.addCircumstance(Circumstance.WORLDWAR);
+                case (1) -> party.addCircumstance(Circumstance.REVOLUTION);
+                default -> correct = false;
+            }
+        }
+        return input;
     }
 }
