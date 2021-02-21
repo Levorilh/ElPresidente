@@ -45,7 +45,7 @@ public class Country {
     public int getPopulation() {
         int population = 0;
         for (Faction faction : listFaction) {
-            population += faction.partisant;
+            population += faction.getPartisant();
         }
         return population;
     }
@@ -62,14 +62,14 @@ public class Country {
         if (consumption < production) {
             int population = getPopulation();
             for (int i = 0; i < (population * r.nextInt(11) / 100); i++) {
-                listFaction.get(r.nextInt(listFaction.size())).partisant++;
+                listFaction.get(r.nextInt(listFaction.size())).addPartisant(1);
             }
         }
 
         if (food < consumption) {
             int mort = (int) Math.floor((consumption - food) / 4);
             for (int i = 0; i < mort; i++) {
-                listFaction.get(r.nextInt(listFaction.size())).partisant--;
+                listFaction.get(r.nextInt(listFaction.size())).addPartisant(-1);
                 for (Faction faction : listFaction) {
                     faction.addSatisfaction(-2);
                 }

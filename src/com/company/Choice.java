@@ -30,7 +30,7 @@ public class Choice {
                 for (int i = 0; i < country.listFaction.size(); i++) {
                     if (country.listFaction.get(i).name.equals(faction.name)) {
                         country.listFaction.get(i).addSatisfaction(faction.getSatisfaction());
-                        country.listFaction.get(i).addPartisant(faction.partisant);
+                        country.listFaction.get(i).addPartisant(faction.getPartisant());
                     }
                 }
             }
