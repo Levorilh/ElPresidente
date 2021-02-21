@@ -54,8 +54,8 @@ public class RandomEventManager {
                 }}, Season.WINTER, "Une tempête de neige traverse votre ile !",
                         new ArrayList<>() {
                             {
-                                add(new Choice("Utiliser l'étentail magique pour éloigner la tempête", null, 0, 0, 0, 0));
-                                add(new Choice("Abandonner le femmes et les enfants", new ArrayList<>() {{
+                                add(new Choice("Utiliser l'éventail magique pour éloigner la tempête", null, 0, 15, 0, 0));
+                                add(new Choice("Abandonner les femmes et les enfants", new ArrayList<>() {{
                                     add(new Faction("Loyalistes", -20, -10));
                                 }}, 0, 0, 0, 0));
                             }
@@ -64,13 +64,13 @@ public class RandomEventManager {
                 //--------------------------------------------------------------------------------------
                 add(new Event(new ArrayList<>() {{
                     add(Circumstance.WORLDWAR);
-                }}, Season.MISCELLANEOUS, "Les Allier demande un soutient financier !",
+                }}, Season.MISCELLANEOUS, "Les Alliés demandent un soutien financier !",
                         new ArrayList<>() {
                             {
                                 add(new Choice("Accepter", null, -200, 0, 0, 0));
                                 add(new Choice("Refuser", new ArrayList<>() {{
                                     add(new Faction("Loyalistes", -20, 0));
-                                }}, 0, 0, 0, 0));
+                                }}, 50, 50, 0, 0));
                             }
                         }
                 ));
@@ -95,7 +95,7 @@ public class RandomEventManager {
                 //--------------------------------------------------------------------------------------
                 add(new Event(new ArrayList<>() {{
                     add(Circumstance.ANYTIME);
-                }}, Season.MISCELLANEOUS, "Une forte demande d'essence est demandé pour continuer à faire tourner les usines\n" +
+                }}, Season.MISCELLANEOUS, "Une forte demande d'essence est demandée pour continuer à faire tourner les usines\n" +
                         "                Que faire ?",
                         new ArrayList<>() {
                             {
@@ -107,20 +107,20 @@ public class RandomEventManager {
                                     add(new Faction("Communistes", -15, 0));
                                 }}, -50, 0, 0, 0));
                                 add(new Choice("Produire plus", new ArrayList<>() {{
-                                    add(new Faction("Communistes", +5, 0));
-                                    add(new Faction("Ecologistes", -20, 0));
-                                }}, 0, 0, 0, +15));
+                                    add(new Faction("Communistes", +10, 0));
+                                    add(new Faction("Ecologistes", -20, -3));
+                                }}, 100, 0, +10, +25));
                             }
                         }
                 ));
                 //--------------------------------------------------------------------------------------
                 add(new Event(new ArrayList<>() {{
                     add(Circumstance.ANYTIME);
-                }}, Season.MISCELLANEOUS, "Tempete sur l'ile!",
+                }}, Season.MISCELLANEOUS, "Tempête sur l'ile!",
                         new ArrayList<>() {
                             {
-                                add(new Choice("Acheter de la nourriture", null, -50, 0, 0, 0));
-                                add(new Choice("Ne rien faire", null, 0, 0, 0, -30));
+                                add(new Choice("Acheter de la nourriture", null, -50, 100, 0, 15));
+                                add(new Choice("Ne rien faire", null, 200, 0, -8, -8));
                             }
                         }
                 ));
@@ -131,8 +131,9 @@ public class RandomEventManager {
                         new ArrayList<>() {
                             {
                                 add(new Choice("Condamner à mort", new ArrayList<>() {{
-                                    add(new Faction("Loyalistes", +10, 0));
-                                }}, 0, 0, 0, 0));
+                                    add(new Faction("Loyalistes", +10, 5));
+                                    add(new Faction("Communistes", +10, 5));
+                                }}, 100, 0, 5, 5));
                                 add(new Choice("Emprisonner", new ArrayList<>() {{
                                     add(new Faction("Loyalistes", -20, 0));
                                 }}, 0, 0, 0, 0));
@@ -145,13 +146,13 @@ public class RandomEventManager {
                 //--------------------------------------------------------------------------------------
                 add(new Event(new ArrayList<>() {{
                     add(Circumstance.ANYTIME);
-                }}, Season.MISCELLANEOUS, "Les gilet jaune débarque !",
+                }}, Season.MISCELLANEOUS, "Les gilets jaunes débarquent !",
                         new ArrayList<>() {
                             {
-                                add(new Choice("Mettre en place un prime d'activité", new ArrayList<>() {{
+                                add(new Choice("Mettre en place une prime d'activité", new ArrayList<>() {{
                                     add(new Faction("Communistes", +20, 0));
                                 }}, -500, 0, 0, 0));
-                                add(new Choice("Les faire espèrer", new ArrayList<>() {{
+                                add(new Choice("Les faire espérer", new ArrayList<>() {{
                                     add(new Faction("Communistes", 5, 0));
                                 }}, 100, 0, 0, 0));
                                 add(new Choice("Ne rien faire", new ArrayList<>() {{
@@ -168,7 +169,7 @@ public class RandomEventManager {
                             {
                                 add(new Choice("Acheter le vaccin", null, -2000, 0, 0, 0));
                                 add(new Choice("Produire le vaccin", null, -1000, 0, 25, 0));
-                                add(new Choice("Ne rien faire", null, 0, 0, 0, 0));
+                                add(new Choice("Ne rien faire", null, -500, 0, 10, 10));
                             }
                         }
                 ));
@@ -180,10 +181,12 @@ public class RandomEventManager {
                             {
                                 add(new Choice("Produire plus", new ArrayList<>() {{
                                     add(new Faction("Communistes", -10, 0));
-                                }}, 0, 0, -20, 20));
+                                    add(new Faction("Ecologistes", 20, 5));
+                                }}, 0, 0, -10, 20));
                                 add(new Choice("Acheter à l'étranger", new ArrayList<>() {{
                                     add(new Faction("Capitalistes", 5, 0));
                                     add(new Faction("Communistes", -10, 0));
+                                    add(new Faction("Ecologistes", -15, 0));
                                 }}, -100, 0, 0, 0));
                                 add(new Choice("Ne rien faire", new ArrayList<>() {{
                                     add(new Faction("Capitalistes", -10, 0));
@@ -229,6 +232,16 @@ public class RandomEventManager {
                                     add(new Faction("Ecologistes", -20, 0));
                                 }}, -200, 0, 0, 0));
                                 add(new Choice("Ne rien faire", null, 0, 0, 0, 0));
+                                add(new Choice("PopCorn!", new ArrayList<>() {{
+                                    add(new Faction("Capitalistes", 10, 0));
+                                    add(new Faction("Communistes", 10, 0));
+                                    add(new Faction("Libéraux", 10, 0));
+                                    add(new Faction("Religieux", 10, 0));
+                                    add(new Faction("Militaristes", 10, 0));
+                                    add(new Faction("Ecologistes", 10, 0));
+                                    add(new Faction("Nationnalistes", 10, 0));
+                                    add(new Faction("Loyalistes", 10, 0));
+                                }}, 0, 0, 5, 5));
                             }
                         }
                 ));
