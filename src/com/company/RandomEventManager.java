@@ -99,7 +99,7 @@ public class RandomEventManager {
                         "                Que faire ?",
                         new ArrayList<Choice>() {
                             {
-                                add(new Choice("Ne rien", new ArrayList<Faction>() {{
+                                add(new Choice("Ne rien faire", new ArrayList<Faction>() {{
                                     add(new Faction("Capitalistes", -15, +10));
                                 }}, 0, 0, -30, 0));
                                 add(new Choice("Acheter a l'etranger", new ArrayList<Faction>() {{
