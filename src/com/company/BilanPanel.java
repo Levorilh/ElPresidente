@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BilanPanel implements DisplayPanel {
@@ -36,11 +37,7 @@ public class BilanPanel implements DisplayPanel {
         while (purchaseFood) {
             System.out.println("\nPour que personne ne meurt de faim il vous faut " + country.foodNeeded() + "de nourriture");
             System.out.println("Combien de nourriture voulez-vous acheter ? (1 nourriture = " + country.foodPrice(1) + "€)");
-            try {
-                buyFood = Integer.parseInt(scanner.nextLine());
-            }catch (NumberFormatException ignored){
-                continue;
-            }
+            buyFood = new Reader().getInteger(scanner);
 
             if (buyFood <= 0 && isUserSure()) {
                 purchaseFood = false;
@@ -64,7 +61,7 @@ public class BilanPanel implements DisplayPanel {
         String answer;
 
         System.out.println("Etes-vous sûr de votre choix ? OUI/NON");
-        answer = sc.nextLine();
+        answer = new Reader().getStringFromList(sc, new ArrayList<String>(){{add("OUI");add("NON");}});
         return answer.equalsIgnoreCase("OUI");
     }
 
@@ -88,7 +85,7 @@ public class BilanPanel implements DisplayPanel {
     private boolean wantsToBribe() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Souhaitez-vous soudoyer une faction? OUI/NON");
-        String userChoice = sc.nextLine();
+        String userChoice = new Reader().getStringFromList(sc, new ArrayList<String>(){{add("OUI");add("NON");}});
 
         if (userChoice.equalsIgnoreCase("OUI")) {
             return true;
@@ -104,13 +101,10 @@ public class BilanPanel implements DisplayPanel {
         System.out.println("Quelle faction voulez-vous soudoyer? ");
         Faction selected;
         try {
-            int userChoice = Integer.parseInt(sc.nextLine());
+            int userChoice = new Reader().getInteger(sc);
             selected = country.getListFaction().get(userChoice);
         } catch (IndexOutOfBoundsException aie) {
             System.out.println("n° de faction inconnu");
-            return selectFaction();
-        }catch (NumberFormatException ignored){
-            System.out.println("On demande un chiffre");
             return selectFaction();
         }
         return selected;

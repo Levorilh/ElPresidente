@@ -10,13 +10,7 @@ public class StartPanel implements DisplayPanel {
             System.out.println("Menu Principal");
             System.out.println("- 0 - Quitter");
             System.out.println("- 1 - Jouer");
-            try {
-
-                input = Integer.parseInt(scanner.nextLine());
-            }catch(NumberFormatException ignored){
-                System.out.println("Ce n'est pas un chiffre");
-                continue;
-            }
+            input = new Reader().getInteger(scanner);
 
             if (input == 1) {
                 NewPartyPanel newPartyPanel = new NewPartyPanel();

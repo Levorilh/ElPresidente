@@ -11,7 +11,6 @@ public class MainGamePanel implements DisplayPanel {
     }
 
     public void show() {
-        Scanner scanner = new Scanner(System.in);
         party.round++;
         do {
             for (Country country : party.listCountry) {
@@ -64,18 +63,10 @@ public class MainGamePanel implements DisplayPanel {
     }
 
     private void userSelect(ArrayList<Choice> choices , Country country) {
-        int input=0;
         boolean correct = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Sélectionnez votre choix :");
-        while(!correct) {
-            try {
-                input = Integer.parseInt(scanner.nextLine());
-                correct = true;
-            } catch (NumberFormatException ignored){
-                System.out.println("Ce n'est pas un nombre");
-            }
-        }
+        int input = new Reader().getInteger(scanner);
         Choice choice = choices.get(input);
         choice.applyChange(country);
     }
