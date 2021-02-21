@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BilanPanel implements DisplayPanel {
     Country country;
@@ -25,13 +24,12 @@ public class BilanPanel implements DisplayPanel {
         country.endOfYearBilan();
 
         if(country.isGameOver()){
-            System.out.println("Fin de la partie");
+            System.out.println("Fin de la partie de " + country.name);
         }
     }
 
     private void askForFood() {
-        Scanner scanner = new Scanner(System.in);
-        int buyFood = 0;
+        int buyFood;
         boolean purchaseFood = true;
 
         while (purchaseFood) {
@@ -57,11 +55,13 @@ public class BilanPanel implements DisplayPanel {
     }
 
     private boolean isUserSure() {
-        Scanner sc = new Scanner(System.in);
         String answer;
 
         System.out.println("Etes-vous sûr de votre choix ? OUI/NON");
-        answer = new Reader().getStringFromList(new ArrayList<String>(){{add("OUI");add("NON");}});
+        answer = new Reader().getStringFromList(new ArrayList<>() {{
+            add("OUI");
+            add("NON");
+        }});
         return answer.equalsIgnoreCase("OUI");
     }
 
@@ -83,9 +83,11 @@ public class BilanPanel implements DisplayPanel {
     }
 
     private boolean wantsToBribe() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Souhaitez-vous soudoyer une faction? OUI/NON");
-        String userChoice = new Reader().getStringFromList(new ArrayList<String>(){{add("OUI");add("NON");}});
+        String userChoice = new Reader().getStringFromList(new ArrayList<>() {{
+            add("OUI");
+            add("NON");
+        }});
 
         if (userChoice.equalsIgnoreCase("OUI")) {
             return true;
@@ -96,7 +98,6 @@ public class BilanPanel implements DisplayPanel {
     }
 
     private Faction selectFaction() {
-        Scanner sc = new Scanner(System.in);
         System.out.println(country.getListFaction().getFactionsNames());
         System.out.println("Quelle faction voulez-vous soudoyer? ");
         Faction selected;

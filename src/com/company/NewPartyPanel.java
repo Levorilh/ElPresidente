@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class NewPartyPanel implements DisplayPanel {
     public void show() {
-        int input = 0;
+        int input;
         Scanner scanner = new Scanner(System.in);
         Party party = new Party();
 
@@ -52,7 +52,7 @@ public class NewPartyPanel implements DisplayPanel {
 
     private void askScenario(Party party) {
         boolean correct = false;
-        int input = 0;
+        int input;
         while (!correct) {
             correct = true;
             System.out.println("Dans quel Scenario souhaitez vous jouer ?");

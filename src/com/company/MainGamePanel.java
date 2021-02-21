@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MainGamePanel implements DisplayPanel {
     Party party;
@@ -46,7 +45,7 @@ public class MainGamePanel implements DisplayPanel {
             }
             party.round++;
         } while (!party.isPartyOver());
-        System.out.println("fin de la partie");
+        System.out.println("Fin de la partie");
 
         boolean winner = false;
         for (Country c: party.listCountry) {
@@ -64,7 +63,6 @@ public class MainGamePanel implements DisplayPanel {
 
     private void userSelect(ArrayList<Choice> choices , Country country) {
         boolean correct = false;
-        Scanner scanner = new Scanner(System.in);
         Choice choice = new Choice();
         while(!correct){
 
