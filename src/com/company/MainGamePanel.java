@@ -24,20 +24,20 @@ public class MainGamePanel implements DisplayPanel {
                     EventPanel eventPanel = new EventPanel(event);
                     eventPanel.show();
                     if(event.choices.size() > 0) {
-                        System.out.println("Selectionnez votre choix :");
+                        System.out.println("Sélectionnez votre choix :");
                         int input = scanner.nextInt();
                         Choice choice = event.choices.get(input);
                         choice.applyChange(country);
                     } else {
                         System.out.println("Vous n'avez pas assez de ressources pour régler ce problème votre peuple perd en confiance");
-                        Choice choice = new Choice("",new ArrayList<Faction>() {{
+                        Choice choice = new Choice("", new ArrayList<>() {{
                             add(new Faction("Capitalistes", -20, 0));
                             add(new Faction("Communistes", -20, 0));
                             add(new Faction("Libéraux", -20, 0));
                             add(new Faction("Religieux", -20, 0));
                             add(new Faction("Militaristes", -20, 0));
                             add(new Faction("Ecologistes", -20, 0));
-                            add(new Faction("Nationalistes", -20, 0));
+                            add(new Faction("Nationnalistes", -20, 0));
                             add(new Faction("Loyalistes", -20, 0));
                         }},0,0,0,0);
                         choice.applyChange(country);

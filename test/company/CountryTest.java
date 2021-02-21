@@ -24,10 +24,9 @@ public class CountryTest {
                         "Religieux "+
                         "Militaristes "+
                         "Ecologistes "+
-                        "Nationalistes "+
+                        "Nationnalistes "+
                         "Loyalistes "
         ));
-
     }
 
     @Test
@@ -42,7 +41,4 @@ public class CountryTest {
         c.addIndustry(60);
         Assert.assertEquals(c.getIndustry(),BASE_INDUSTRY);
     }
-
-
-
 }

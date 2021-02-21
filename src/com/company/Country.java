@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 public class Country {
-    private static int FOOD_PRICE = 8;
+    private final int FOOD_PRICE = 8;
     final int foodByPartisantByYear = 4;
 
     String name;
@@ -30,10 +30,6 @@ public class Country {
     }
 
     private ListFaction defaultCountryFaction() {
-        int DEFAULT_SATISFACTION = 50;
-        int SPECIAL_SATISFACTION_LOYALISTS = 100;
-        int PARTISANT_BY_FACTION = 15;
-
         return ListFaction.fromDefault();
     }
 
@@ -123,18 +119,6 @@ public class Country {
                 .addSatisfaction(-(paidValue / CORRUPTION_RATIO));
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getTreasury() {
-        return this.treasury;
-    }
-
-    public int getFood() {
-        return this.food;
-    }
-
     public int getIndustry() {
         return this.industry;
     }
@@ -180,22 +164,6 @@ public class Country {
                 ",\n Partie de l'île réservée à l'industrie " + industry + "%" +
                 ",\n Partie de l'île réservée à l'agriculture " + farming + "%"
                 ;
-    }
-
-    public void setTreasury(int treasury) {
-        this.treasury = treasury;
-    }
-
-    public void setFood(int food) {
-        this.food = food;
-    }
-
-    public void setIndustry(int industry) {
-        this.industry = industry;
-    }
-
-    public void setFarming(int farming) {
-        this.farming = farming;
     }
 
     public Event deleteImpossibleChoiceInEvent(Event event) {

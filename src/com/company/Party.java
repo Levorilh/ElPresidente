@@ -15,14 +15,12 @@ public class Party {
         listCircumstance = new ArrayList<>();
     }
 
-    public Party addCountry(Country country) {
+    public void addCountry(Country country) {
         listCountry.add(country);
-        return this;
     }
 
-    public Party addCircumstance(Circumstance circumstance){
+    public void addCircumstance(Circumstance circumstance){
         listCircumstance.add(circumstance);
-        return this;
     }
 
     public boolean isPartyOver() {

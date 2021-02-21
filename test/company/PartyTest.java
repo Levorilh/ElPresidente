@@ -1,7 +1,5 @@
 package company;
 
-import com.company.Country;
-import com.company.Party;
 import org.junit.Test;
 
 public class PartyTest {

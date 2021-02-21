@@ -6,20 +6,15 @@ public class NewPartyPanel implements DisplayPanel{
     public void show(){
         Scanner scanner = new Scanner(System.in);
         Party party = new Party();
-        int input = 0;
-        int minimalSatisfactionAllowed = 0;
+        int input;
 
         System.out.println("Dans quel Scenario souhaitez vous jouer ?");
         System.out.println("-0- 1er guerre mondiale");
         System.out.println("-1- Révolution française");
         input = scanner.nextInt();
-        switch(input){
-            case(0):
-                party.addCircumstance(Circumstance.WORLDWAR);
-                break;
-            case(1):
-                party.addCircumstance(Circumstance.REVOLUTION);
-                break;
+        switch (input) {
+            case (0) -> party.addCircumstance(Circumstance.WORLDWAR);
+            case (1) -> party.addCircumstance(Circumstance.REVOLUTION);
         }
         party.addCircumstance(Circumstance.ANYTIME);
 
@@ -28,16 +23,10 @@ public class NewPartyPanel implements DisplayPanel{
         System.out.println("-1- Normal");
         System.out.println("-2- Difficile");
         input = scanner.nextInt();
-        switch (input){
-            case (0):
-                party.difficultyLevel = DifficultyLevel.EASY;
-                break;
-            case (1):
-                party.difficultyLevel = DifficultyLevel.MEDIUM;
-                break;
-            case (2):
-                party.difficultyLevel = DifficultyLevel.HARD;
-                break;
+        switch (input) {
+            case (0) -> party.difficultyLevel = DifficultyLevel.EASY;
+            case (1) -> party.difficultyLevel = DifficultyLevel.MEDIUM;
+            case (2) -> party.difficultyLevel = DifficultyLevel.HARD;
         }
 
         System.out.println("Combien de joueur ?");

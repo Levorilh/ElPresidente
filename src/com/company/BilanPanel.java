@@ -65,9 +65,6 @@ public class BilanPanel implements DisplayPanel {
 
     private void askForBribe() {
         boolean end = false;
-        Scanner sc = new Scanner(System.in);
-        String userChoice;
-        int factionQty = country.getListFaction().size();
         do {
             if (wantsToBribe()) {
                 Faction selected = selectFaction();
