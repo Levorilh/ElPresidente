@@ -15,11 +15,11 @@ public class Reader {
         }while(true);
     }
 
-    public String getStringFromList(Scanner scanner, ArrayList<String> avalableResponses){
+    public String getStringFromList(Scanner scanner, ArrayList<String> availableResponses){
         do{
             try{
                 String input = scanner.nextLine();
-                if(avalableResponses.contains(input))
+                if(availableResponses.contains(input))
                     return input;
                 else
                     System.out.println("La réponse proposée n'est pas une proposition valable, veuillez entrer une réponse valable");

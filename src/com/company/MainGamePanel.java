@@ -65,9 +65,18 @@ public class MainGamePanel implements DisplayPanel {
     private void userSelect(ArrayList<Choice> choices , Country country) {
         boolean correct = false;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Sélectionnez votre choix :");
-        int input = new Reader().getInteger(scanner);
-        Choice choice = choices.get(input);
+        Choice choice = new Choice();
+        while(!correct){
+
+            System.out.println("Sélectionnez votre choix :");
+            int input = new Reader().getInteger(scanner);
+            try{
+                choice = choices.get(input);
+                correct = true;
+            }catch(IndexOutOfBoundsException e){
+                System.out.println("Ce choix n'est pas dans la liste");
+            }
+        }
         choice.applyChange(country);
     }
 }
