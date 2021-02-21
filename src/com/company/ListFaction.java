@@ -35,8 +35,8 @@ public class ListFaction extends ArrayList<Faction> {
         int satisfaction = 0;
 
         for (Faction faction : this) {
-            population += faction.partisant;
-            satisfaction += faction.getSatisfaction()*faction.partisant;
+            population += faction.getPartisant();
+            satisfaction += faction.getSatisfaction()*faction.getPartisant();
         }
         return (float)satisfaction/population;
     }
