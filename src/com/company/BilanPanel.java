@@ -37,7 +37,7 @@ public class BilanPanel implements DisplayPanel {
         while (purchaseFood) {
             System.out.println("\nPour que personne ne meurt de faim il vous faut " + country.foodNeeded() + "de nourriture");
             System.out.println("Combien de nourriture voulez-vous acheter ? (1 nourriture = " + country.foodPrice(1) + "€)");
-            buyFood = new Reader().getInteger(scanner);
+            buyFood = new Reader().getInteger();
 
             if (buyFood <= 0 && isUserSure()) {
                 purchaseFood = false;
@@ -61,7 +61,7 @@ public class BilanPanel implements DisplayPanel {
         String answer;
 
         System.out.println("Etes-vous sûr de votre choix ? OUI/NON");
-        answer = new Reader().getStringFromList(sc, new ArrayList<String>(){{add("OUI");add("NON");}});
+        answer = new Reader().getStringFromList(new ArrayList<String>(){{add("OUI");add("NON");}});
         return answer.equalsIgnoreCase("OUI");
     }
 
@@ -85,7 +85,7 @@ public class BilanPanel implements DisplayPanel {
     private boolean wantsToBribe() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Souhaitez-vous soudoyer une faction? OUI/NON");
-        String userChoice = new Reader().getStringFromList(sc, new ArrayList<String>(){{add("OUI");add("NON");}});
+        String userChoice = new Reader().getStringFromList(new ArrayList<String>(){{add("OUI");add("NON");}});
 
         if (userChoice.equalsIgnoreCase("OUI")) {
             return true;
@@ -101,7 +101,7 @@ public class BilanPanel implements DisplayPanel {
         System.out.println("Quelle faction voulez-vous soudoyer? ");
         Faction selected;
         try {
-            int userChoice = new Reader().getInteger(sc);
+            int userChoice = new Reader().getInteger();
             selected = country.getListFaction().get(userChoice);
         } catch (IndexOutOfBoundsException aie) {
             System.out.println("n° de faction inconnu");

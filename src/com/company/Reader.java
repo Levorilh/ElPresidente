@@ -4,21 +4,29 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reader {
-    public int getInteger(Scanner scanner){
+    private Scanner sc;
+
+
+    public Reader(){
+        sc = new Scanner(System.in);
+    }
+
+    public int getInteger(){
         do{
             try{
-                int input = scanner.nextInt();
+                int input = sc.nextInt();
                 return input;
             } catch (Exception e){
                 System.out.println("Format d'entré incorrect veuillez entrer un nombre entier");
+                sc.nextLine();
             }
         }while(true);
     }
 
-    public String getStringFromList(Scanner scanner, ArrayList<String> availableResponses){
+    public String getStringFromList(ArrayList<String> availableResponses){
         do{
             try{
-                String input = scanner.nextLine();
+                String input = sc.nextLine();
                 if(availableResponses.contains(input))
                     return input;
                 else

@@ -69,7 +69,7 @@ public class MainGamePanel implements DisplayPanel {
         while(!correct){
 
             System.out.println("Sélectionnez votre choix :");
-            int input = new Reader().getInteger(scanner);
+            int input = new Reader().getInteger();
             try{
                 choice = choices.get(input);
                 correct = true;

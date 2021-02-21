@@ -10,7 +10,7 @@ public class StartPanel implements DisplayPanel {
             System.out.println("Menu Principal");
             System.out.println("- 0 - Quitter");
             System.out.println("- 1 - Jouer");
-            input = new Reader().getInteger(scanner);
+            input = new Reader().getInteger();
 
             if (input == 1) {
                 NewPartyPanel newPartyPanel = new NewPartyPanel();
