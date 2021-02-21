@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainGamePanel implements DisplayPanel {
@@ -22,10 +23,25 @@ public class MainGamePanel implements DisplayPanel {
                     event = country.deleteImpossibleChoiceInEvent(event);
                     EventPanel eventPanel = new EventPanel(event);
                     eventPanel.show();
-                    System.out.println("Selectionnez votre choix :");
-                    int input = scanner.nextInt();
-                    Choice choice = event.choices.get(input);
-                    choice.applyChange(country);
+                    if(event.choices.size() > 0) {
+                        System.out.println("Selectionnez votre choix :");
+                        int input = scanner.nextInt();
+                        Choice choice = event.choices.get(input);
+                        choice.applyChange(country);
+                    } else {
+                        System.out.println("Vous n'avez pas assez de ressources pour régler ce problème votre peuple perd en confiance");
+                        Choice choice = new Choice("",new ArrayList<Faction>() {{
+                            add(new Faction("Capitalistes", -20, 0));
+                            add(new Faction("Communistes", -20, 0));
+                            add(new Faction("Libéraux", -20, 0));
+                            add(new Faction("Religieux", -20, 0));
+                            add(new Faction("Militaristes", -20, 0));
+                            add(new Faction("Ecologistes", -20, 0));
+                            add(new Faction("Nationalistes", -20, 0));
+                            add(new Faction("Loyalistes", -20, 0));
+                        }},0,0,0,0);
+                        choice.applyChange(country);
+                    }
                     if (party.round % 4 == 0) {
                         BilanPanel bilanPanel = new BilanPanel(country);
                         bilanPanel.show();
