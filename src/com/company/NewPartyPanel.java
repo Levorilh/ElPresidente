@@ -4,22 +4,13 @@ import java.util.Scanner;
 
 public class NewPartyPanel implements DisplayPanel {
     public void show() {
+        int input = 0;
         Scanner scanner = new Scanner(System.in);
         Party party = new Party();
 
-        int input = askScenario(party);
+        askScenario(party);
         party.addCircumstance(Circumstance.ANYTIME);
-
-        System.out.println("Choisissez le niveau de difficulté");
-        System.out.println("-0- Facile");
-        System.out.println("-1- Normal");
-        System.out.println("-2- Difficile");
-        input = new Reader().getInteger();
-        switch (input) {
-            case (0) -> party.difficultyLevel = DifficultyLevel.EASY;
-            case (1) -> party.difficultyLevel = DifficultyLevel.MEDIUM;
-            case (2) -> party.difficultyLevel = DifficultyLevel.HARD;
-        }
+        askDifficultyLevel(party);
 
         System.out.println("Combien de joueur ?");
         input = new Reader().getInteger();
@@ -40,7 +31,26 @@ public class NewPartyPanel implements DisplayPanel {
         mainGamePanel.show();
     }
 
-    private int askScenario(Party party) {
+    private void askDifficultyLevel(Party party) {
+        boolean correct = false;
+        int input;
+        while (!correct) {
+            correct = true;
+            System.out.println("Choisissez le niveau de difficulté");
+            System.out.println("-0- Facile");
+            System.out.println("-1- Normal");
+            System.out.println("-2- Difficile");
+            input = new Reader().getInteger();
+            switch (input) {
+                case (0) -> party.difficultyLevel = DifficultyLevel.EASY;
+                case (1) -> party.difficultyLevel = DifficultyLevel.MEDIUM;
+                case (2) -> party.difficultyLevel = DifficultyLevel.HARD;
+                default -> correct = false;
+            }
+        }
+    }
+
+    private void askScenario(Party party) {
         boolean correct = false;
         int input = 0;
         while (!correct) {
@@ -56,6 +66,5 @@ public class NewPartyPanel implements DisplayPanel {
                 default -> correct = false;
             }
         }
-        return input;
     }
 }
