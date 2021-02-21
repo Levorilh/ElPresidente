@@ -152,7 +152,7 @@ public class Country {
         if (isOverExploited()) {
             industry -= newIndustry;
         }
-        industry = Math.max(0 , industry);
+        industry = Math.max(0, industry);
     }
 
     public void addFarming(int newFarming) {
@@ -160,14 +160,14 @@ public class Country {
         if (isOverExploited()) {
             farming -= newFarming;
         }
-        farming = Math.max(0 , farming);
+        farming = Math.max(0, farming);
     }
 
     public void addTreasury(int value) {
         treasury += value;
     }
 
-    public void addFood(int food){
+    public void addFood(int food) {
         this.food += food;
     }
 
@@ -196,5 +196,15 @@ public class Country {
 
     public void setFarming(int farming) {
         this.farming = farming;
+    }
+
+    public Event deleteImpossibleChoiceInEvent(Event event) {
+        Event newEvent = new Event(event.circumstance, event.season,event.description, event.choices);
+        for (int i = event.choices.size() - 1; i >= 0; i--) {
+            if (event.choices.get(i).treasury + this.treasury < 0 || event.choices.get(i).food + this.food < 0) {
+                event.choices.remove(i);
+            }
+        }
+        return newEvent;
     }
 }

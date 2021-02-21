@@ -19,6 +19,7 @@ public class MainGamePanel implements DisplayPanel {
                     Season season = Season.values()[party.round%4];
                     RandomEventManager randomEventManager = new RandomEventManager(party.listCircumstance,season);
                     Event event = randomEventManager.getEvent();
+                    event = country.deleteImpossibleChoiceInEvent(event);
                     EventPanel eventPanel = new EventPanel(event);
                     eventPanel.show();
                     System.out.println("Selectionnez votre choix :");
