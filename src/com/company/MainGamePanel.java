@@ -39,7 +39,7 @@ public class MainGamePanel implements DisplayPanel {
         boolean winner = false;
         for (Country c: party.listCountry) {
             if(!c.isGameOver()){
-                System.out.println(c.name + "a duré le plus longtemps... après " + party.round + "tours");
+                System.out.println(c.name + " a duré le plus longtemps... après " + party.round + "tours");
                 winner = true;
             }
         }
