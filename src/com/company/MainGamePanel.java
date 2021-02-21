@@ -24,10 +24,7 @@ public class MainGamePanel implements DisplayPanel {
                     EventPanel eventPanel = new EventPanel(event);
                     eventPanel.show();
                     if(event.choices.size() > 0) {
-                        System.out.println("Sélectionnez votre choix :");
-                        int input = scanner.nextInt();
-                        Choice choice = event.choices.get(input);
-                        choice.applyChange(country);
+                        userSelect(event.choices , country);
                     } else {
                         System.out.println("Vous n'avez pas assez de ressources pour régler ce problème votre peuple perd en confiance");
                         Choice choice = new Choice("", new ArrayList<>() {{
@@ -64,6 +61,22 @@ public class MainGamePanel implements DisplayPanel {
                     "après " + party.round + " tours");
         }
 
+    }
 
+    private void userSelect(ArrayList<Choice> choices , Country country) {
+        int input=0;
+        boolean correct = false;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Sélectionnez votre choix :");
+        while(!correct) {
+            try {
+                input = Integer.parseInt(scanner.nextLine());
+                correct = true;
+            } catch (NumberFormatException ignored){
+                System.out.println("Ce n'est pas un nombre");
+            }
+        }
+        Choice choice = choices.get(input);
+        choice.applyChange(country);
     }
 }

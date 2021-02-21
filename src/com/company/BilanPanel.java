@@ -36,8 +36,13 @@ public class BilanPanel implements DisplayPanel {
         while (purchaseFood) {
             System.out.println("\nPour que personne ne meurt de faim il vous faut " + country.foodNeeded() + "de nourriture");
             System.out.println("Combien de nourriture voulez-vous acheter ? (1 nourriture = " + country.foodPrice(1) + "€)");
-            buyFood = scanner.nextInt();
-            if (buyFood == 0 && isUserSure()) {
+            try {
+                buyFood = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException ignored){
+                continue;
+            }
+
+            if (buyFood <= 0 && isUserSure()) {
                 purchaseFood = false;
             } else {
                 System.out.println("Pour " + buyFood + " nourriture ça vous fera " + country.foodPrice(buyFood) + "€ à payer");
@@ -99,9 +104,13 @@ public class BilanPanel implements DisplayPanel {
         System.out.println("Quelle faction voulez-vous soudoyer? ");
         Faction selected;
         try {
-            selected = country.getListFaction().get(sc.nextInt());
+            int userChoice = Integer.parseInt(sc.nextLine());
+            selected = country.getListFaction().get(userChoice);
         } catch (IndexOutOfBoundsException aie) {
             System.out.println("n° de faction inconnu");
+            return selectFaction();
+        }catch (NumberFormatException ignored){
+            System.out.println("On demande un chiffre");
             return selectFaction();
         }
         return selected;
