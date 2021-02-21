@@ -51,10 +51,10 @@ public class RandomEventManager {
                 //--------------------------------------------------------------------------------------
                 add(new Event(new ArrayList<Circumstance>() {{
                     add(Circumstance.ANYTIME);
-                }}, Season.MISCELLANEOUS, "Une tornade traverse votre ile !",
+                }}, Season.WINTER, "Une tempête de neige traverse votre ile !",
                         new ArrayList<Choice>() {
                             {
-                                add(new Choice("Utiliser l'étentaille magique pour éloigner la tornade", null, 0, 0, 0, 0));
+                                add(new Choice("Utiliser l'étentaille magique pour éloigner la tempête", null, 0, 0, 0, 0));
                                 add(new Choice("Abandonner le femmes et les enfants", new ArrayList<Faction>() {{
                                     add(new Faction("Loyalistes", -20, -10));
                                 }}, 0, 0, 0, 0));
